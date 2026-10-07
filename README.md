@@ -1,40 +1,110 @@
-# Introduction
-This project was made to explore and test Credit Card Fraud Detection Dataset from Kaggle(https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data) which was offered as a choice in one of my course homework’s in university to explore and explain.
-## Data
-At first glance it is obvious that most of the data except the Time and Amount columns are scaled already and the impact of scaling or not scaling those two columns seems minimal from my testing’s.
-## Methods & Results
-Like the last project I also tried a variety of methods, but I also thought that Decision trees would work well for this dataset which was proved after adding and testing it as it had the most accuracy however it was nearly identical to the accuracy of Logistic regression.
+# Credit Card Fraud Detection
 
-Upon deeper analysis Decision tree also has better scores in recall and f1-score compared to Logistic regression but I also noticed some of the projects at Kaggle using Cross-validation to see which one performs better which is defiantly a good idea to be sure which one is better.
+A machine-learning-based web application for analyzing credit card transactions and identifying potentially fraudulent activity.
 
-However after testing the model with a few other methods it is clear that by far the best model for this dataset is KNN at the moment and it outperforms other models.
+## 🚀 Live Demo
 
-The most challenging part of this project was visualizing the dataset:
+**Streamlit App:**  
+https://credit-card-fraud-detection-fieztggsuekmnrzbnsgpgg.streamlit.app/
 
-  •	  The large amount of the dataset (284K rows and 32 columns each)  was too much for my device.
+## 📌 Overview
 
-  •	  Because most of the dataset is already scaled it is very hard to extract any meaningful information from the graphs at my skill level.
+This project uses an anonymized credit card transaction dataset to demonstrate fraud detection with machine learning and a CNN-based classification model.
 
-  ## API
-  A REST API was also added to this projct as part of a the homewrok needed for the Open Source Softwer Course in the University and here are the functions of the API.
-  
-  add: Add a new result to the databas  
-  Parameters: filename, results, type
-  
-  results: Get all the results from the database  
-  Parameters: None
-  
-  delete: Delete all the results from the database(if no filename is specified) or a specific result  
-  Parameters: filename
-  
-  update: Update a specific result in the database  
-  Parameters: filename, results
-  
-  collections: List all the collections in the database  
-  Parameters: None
-  
-  databases: List all the databases in the MongoDB server  
-  Parameters: None
-  
-  functions: List all the functions available in the API  
-  Parameters: None
+The Streamlit application provides:
+
+- Single-transaction fraud analysis
+- Batch CSV prediction
+- Fraud/legitimate classification
+- Model confidence scores
+- Transaction feature inspection
+- Downloadable batch prediction results
+
+## 📊 Dataset
+
+The project is based on the Credit Card Fraud Detection dataset available on Kaggle:
+
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
+The dataset contains transaction features including:
+
+- Time
+- Amount
+- V1–V28 anonymized features
+- Class label
+
+The dataset contains approximately 284,000 transactions, with fraudulent transactions representing a small minority of the data.
+
+## 🧠 Model
+
+The deployed application uses a CNN/Conv1D neural network.
+
+### Input Features
+
+The model uses 30 input features:
+
+- Scaled Time
+- Scaled Amount
+- V1–V28
+
+### Architecture
+
+1. Conv1D
+2. Conv1D
+3. Conv1D
+4. Flatten
+5. Dense sigmoid output
+
+A prediction score of **0.5 or higher** is classified as fraudulent; scores below 0.5 are classified as legitimate.
+
+## 🖥️ Application
+
+The Streamlit interface contains three main sections:
+
+### Single Transaction
+
+Select a transaction from the demonstration dataset and run the trained model to receive a fraud/legitimate prediction.
+
+### Batch Prediction
+
+Upload a CSV containing:
+
+`Time`, `Amount`, and `V1`–`V28`
+
+The application generates predictions and allows the results to be downloaded as a CSV file.
+
+### About the Model
+
+Provides information about the dataset, features, model architecture, and classification method.
+
+## 🔌 REST API
+
+The repository also contains a small Flask-based REST API demonstration with endpoints for adding, retrieving, deleting, and updating results.
+
+## 🛠️ Technologies
+
+- Python
+- TensorFlow / Keras
+- Scikit-learn
+- Pandas
+- NumPy
+- Joblib
+- Streamlit
+- Flask
+- Docker
+
+## 📁 Project Structure
+
+```text
+├── API/
+├── API.py
+├── API_TEST.py
+├── ML.py
+├── app.py
+├── best_model.h5
+├── demo_transactions.csv
+├── prepare_deployment.py
+├── requirements.txt
+├── scalers.joblib
+├── Dockerfile
+└── README.md
