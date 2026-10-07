@@ -5,7 +5,7 @@ A machine-learning-based web application for analyzing credit card transactions 
 ## 🚀 Live Demo
 
 **Streamlit App:**  
-https://credit-card-fraud-detection-fieztggsuekmnrzbnsgpgg.streamlit.app/
+https://credit-card-fraud-detector-using-kaggle-dataset-vnyf7ntl5lsv8j.streamlit.app/
 
 ## 📌 Overview
 
